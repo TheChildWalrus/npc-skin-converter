@@ -2,7 +2,7 @@ NPC Skin Converter is a utility I developed to convert LOTR Mod NPC skins from t
 
 Maybe you will find it useful too.
 
-To run, 'mvn package' to get the .jar, then put it in the folder containing the skins you wish to convert, and run using 'java -jar [filename.jar] [skin-type]'
+To run, 'mvn package' to get the .jar, then put it in the folder containing the skins you wish to convert, and run using 'java -jar [program filename.jar] [skin-type]'
 
 Skin types are man, elf, hobbit, dwarf, orc.
 
