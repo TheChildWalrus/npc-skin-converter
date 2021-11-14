@@ -1,34 +1,15 @@
 package npcskinconverter;
 
-import static java.util.stream.Collectors.joining;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.imageio.ImageIO;
 
 public class Converter
 {
-	private static enum SkinType
-	{
-		MAN, ELF, HOBBIT, DWARF, ORC;
-		
-		public static SkinType forName(String name)
-		{
-			return Stream.of(values()).filter(type -> type.name().equalsIgnoreCase(name)).findFirst()
-					.orElseThrow(() -> new IllegalArgumentException("Unknown skin type " + name + "! Needs to be one of " + getTypesForSuggestion()));
-		}
-		
-		public static String getTypesForSuggestion()
-		{
-			return Stream.of(values()).map(type -> type.name().toLowerCase()).collect(joining(", "));
-		}
-	}
-	
 	public static void main(String[] args)
 	{
 		if (args.length < 1)
@@ -92,14 +73,7 @@ public class Converter
 	
 	private static BufferedImage convertImage(BufferedImage srcImg, SkinType skinType)
 	{
-		BufferedImage outputImg = new BufferedImage(128, 64, BufferedImage.TYPE_INT_ARGB);
-		for (int y = 0; y < 64; y++)
-		{
-			for (int x = 0; x < 64; x++)
-			{
-				outputImg.setRGB(x, y, srcImg.getRGB(x, y));
-			}
-		}
-		return outputImg;
+		ImageConversion conversion = new ImageConversion(srcImg, skinType);
+		return conversion.getConvertedImage();
 	}
 }
