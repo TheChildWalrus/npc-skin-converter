@@ -1,9 +1,12 @@
 package npcskinconverter;
 
+import static java.util.stream.Collectors.joining;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.imageio.ImageIO;
@@ -17,7 +20,12 @@ public class Converter
 		public static SkinType forName(String name)
 		{
 			return Stream.of(values()).filter(type -> type.name().equalsIgnoreCase(name)).findFirst()
-					.orElseThrow(() -> new IllegalArgumentException("Unknown skin type " + name));
+					.orElseThrow(() -> new IllegalArgumentException("Unknown skin type " + name + "! Needs to be one of " + getTypesForSuggestion()));
+		}
+		
+		public static String getTypesForSuggestion()
+		{
+			return Stream.of(values()).map(type -> type.name().toLowerCase()).collect(joining(", "));
 		}
 	}
 	
@@ -25,8 +33,7 @@ public class Converter
 	{
 		if (args.length < 1)
 		{
-			throw new IllegalArgumentException("Not enough args! Need skin type");
-			// needs to be one of
+			throw new IllegalArgumentException("Not enough args! Need skin type argument - can be one of " + SkinType.getTypesForSuggestion());
 		}
 		
 		String skinTypeName = args[0];
