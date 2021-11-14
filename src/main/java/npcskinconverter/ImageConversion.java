@@ -134,7 +134,7 @@ public class ImageConversion
 			for (int x = 0; x < width; x++)
 			{
 				// Only mirrored in the x dimension!
-				outputImg.setRGB(destX + width - x, destY + y, srcImg.getRGB(srcX + x, srcY + y));
+				outputImg.setRGB(destX + width - x - 1, destY + y, srcImg.getRGB(srcX + x, srcY + y));
 			}
 		}
 	}
