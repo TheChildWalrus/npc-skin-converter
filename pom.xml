@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>lotrmod</groupId>
+  <artifactId>npc-skin-converter</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>NPC Skin Converter</name>
+  <description>Utility to convert LOTR Mod NPC skins from legacy to renewed format.</description>
+  
+  <properties>
+    <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+  </properties>
+  
+  <build>
+	<plugins>
+		 <plugin>
+			<!-- Build an executable JAR -->
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>${maven-jar-plugin.version}</version>
+			<configuration>
+				<archive>
+					<manifest>
+						<!-- <addClasspath>true</addClasspath> -->
+						<mainClass>npcskinconverter.Converter</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+		</plugin>
+	  </plugins>
+  </build>
+</project>
