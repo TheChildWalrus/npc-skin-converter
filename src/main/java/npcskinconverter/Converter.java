@@ -49,9 +49,14 @@ public class Converter
 		try
 		{
 			BufferedImage srcImg = ImageIO.read(path.toFile());
-			if (srcImg.getWidth() != 64 || srcImg.getHeight() != 64)
+			int srcWidth = srcImg.getWidth();
+			int srcHeight = srcImg.getHeight();
+			int expectedWidth = skinType.legacyFormatWidth;
+			int expectedHeight = skinType.legacyFormatHeight;
+			if (srcWidth != expectedWidth || srcHeight != expectedHeight)
 			{
-				throw new IllegalArgumentException(String.format("Expected skin %s to be 64x64, but it was %dx%d!", path, srcImg.getWidth(), srcImg.getHeight()));
+				throw new IllegalArgumentException(String.format("Expected legacy %s skin %s to be %dx%d, but it was %dx%d!",
+						skinType.name().toLowerCase(), path, expectedWidth, expectedHeight, srcWidth, srcHeight));
 			}
 			
 			BufferedImage outputImg = convertImage(srcImg, skinType);

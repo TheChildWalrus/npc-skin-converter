@@ -6,7 +6,20 @@ import java.util.stream.Stream;
 
 public enum SkinType
 {
-	MAN, ELF, HOBBIT, DWARF, ORC;
+	MAN(64, 64), ELF(64, 64), HOBBIT(64, 64), DWARF(64, 64), ORC(64, 32);
+	
+	public final int legacyFormatWidth;
+	public final int legacyFormatHeight;
+	
+	// Can make these per-type if necessary in the future.
+	public final int renewedFormatWidth = 128;
+	public final int renewedFormatHeight = 64;
+	
+	private SkinType(int w, int h)
+	{
+		legacyFormatWidth = w;
+		legacyFormatHeight = h;
+	}
 	
 	public static SkinType forName(String name)
 	{
