@@ -1,4 +1,4 @@
-NPC Skin Converter is a utility I developed to convert LOTR Mod NPC skins from the old Legacy format (64x64) into the new Renewed format (128x64, incorporating features from the modern player skin format) which will be in place following Renewed 5.1.
+NPC Skin Converter is a utility I developed to convert LOTR Mod NPC skins from the old Legacy format (64x64) into the new Renewed format (128x64, incorporating features from the modern player skin format) which will be in place beginning from Renewed 5.1.
 
 Maybe you will find it useful too.
 
